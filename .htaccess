@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /projetos-estudos/financeiro-revizzi/
+
+# Permite acesso direto a arquivos e diretórios existentes (CSS, JS, assets)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redireciona todo o resto para o front controller
+RewriteRule ^(.*)$ index.php [QSA,L]
