@@ -93,6 +93,32 @@ class Lancamento
         return (float) $st->fetchColumn();
     }
 
+    public function breakdownPorCategoria(string $mes): array
+    {
+        $st = db()->prepare(
+            "SELECT categoria, tipo, SUM(valor) AS total
+             FROM lancamentos
+             WHERE DATE_FORMAT(data, '%Y-%m') = ?
+             GROUP BY categoria, tipo
+             ORDER BY tipo, total DESC"
+        );
+        $st->execute([$mes]);
+        return $st->fetchAll();
+    }
+
+    public function totalPorFormaPagamento(string $mes): array
+    {
+        $st = db()->prepare(
+            "SELECT forma_pagamento, SUM(valor) AS total
+             FROM lancamentos
+             WHERE tipo = 'entrada' AND DATE_FORMAT(data, '%Y-%m') = ?
+             GROUP BY forma_pagamento
+             ORDER BY total DESC"
+        );
+        $st->execute([$mes]);
+        return $st->fetchAll();
+    }
+
     public function dadosPorDia(string $mes): array
     {
         $st = db()->prepare(

@@ -213,14 +213,14 @@ $extraStyles = <<<HTML
     }
     @media (max-width: 767px) {
       #rel-wrapper    { padding: 0.8rem 0rem 2rem; }
-      #nav-header     { justify-content: center; padding-left: 0; padding-right: 0; }
-      .th-mob  { display: inline; }
+.th-mob  { display: inline; }
       .th-desk { display: none; }
       .secao          { padding:8px 8px; min-width: 0; }
       .resultado-meta { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
       .resultado-meta .val { font-size: 1.4rem; }
       .dia-data       { display: none; }
       .tabela-rel                { font-size: 0.78rem; table-layout: fixed; width: 100%; }
+      .cards-3{gap: 0.4rem;}
       .tabela-rel th,
       .tabela-rel td             { padding: 4px 4px; white-space: nowrap; text-align: center; }
       .tabela-rel thead th       { letter-spacing: 0; padding: 6px 4px; text-align: center; }
@@ -229,9 +229,8 @@ $extraStyles = <<<HTML
     }
     @media (max-width: 480px) {
       .calc-grid             { grid-template-columns: 1fr; }
-      .cards-3               { grid-template-columns: 1fr 1fr; }
-      .cards-3 > :last-child { grid-column: 1 / -1; }
-      .cards-proj            { grid-template-columns: 1fr 1fr; }
+      .cards-3               { grid-template-columns: 1fr; }
+      .cards-proj            { grid-template-columns: 1fr 1fr; gap: 0.4rem; }
       .card-s .val           { font-size: 1.1rem; }
     }
     #nav-pages{

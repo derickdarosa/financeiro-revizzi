@@ -22,7 +22,14 @@
         </a>
       </div>
       <?php if (!empty($_SESSION['autenticado'])): ?>
-        <a href="logout" id="btn-logout">Sair</a>
+      <div id="nav-hamburger-wrap">
+        <button id="btn-hamburger" aria-label="Menu">&#9776;</button>
+        <div id="menu-hamburger">
+          <a href="relatorios">Home</a>
+          <a href="analises" <?= ($paginaAtiva ?? '') === 'analises' ? 'class="ativo"' : '' ?>>Análises</a>
+          <a href="logout">Sair</a>
+        </div>
+      </div>
       <?php endif; ?>
     </header>
 
@@ -35,7 +42,16 @@
     </main>
 
   </div>
-  <script>window.BASE = '<?= rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') ?>';</script>
+  <script>
+    window.BASE = '<?= rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') ?>';
+    document.getElementById('btn-hamburger')?.addEventListener('click', function(e) {
+      e.stopPropagation();
+      document.getElementById('menu-hamburger').classList.toggle('aberto');
+    });
+    document.addEventListener('click', function() {
+      document.getElementById('menu-hamburger')?.classList.remove('aberto');
+    });
+  </script>
   <script src="assets/js/dashboard.js"></script>
   <?= $extraScripts ?>
 </body>

@@ -24,6 +24,7 @@ $router->get('/entradas',   [LancamentoController::class, 'entradas']);
 $router->get('/saidas-var', [LancamentoController::class, 'saidasVariaveis']);
 $router->get('/saidas-fix', [LancamentoController::class, 'saidasFixas']);
 $router->get('/relatorios', [RelatorioController::class,  'index']);
+$router->get('/analises',  [RelatorioController::class,  'mensal']);
 
 // API (backend pendente)
 $router->post('/api/lancamentos',        [LancamentoController::class, 'store']);

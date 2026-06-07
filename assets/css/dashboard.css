@@ -106,6 +106,50 @@ main {
   align-items: center;
 }
 
+#nav-hamburger-wrap {
+  position: relative;
+  padding-right: 0.5rem;
+}
+
+#btn-hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  color: var(--cor-branco-GM);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+#menu-hamburger {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: white;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--bdr-md);
+  padding: 0.4rem;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  min-width: 160px;
+}
+
+#menu-hamburger.aberto { display: block; }
+
+#menu-hamburger a {
+  display: block;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  color: var(--cor-carvao-ford);
+  font-weight: 600;
+  border-radius: var(--bdr-sm);
+  font-size: 1rem;
+}
+
+#menu-hamburger a:hover { background: var(--cor-branco-GM); }
+#menu-hamburger a.ativo { background: var(--cor-azul); color: white; }
+
 #nav-pages{
   display: flex;
   list-style-type: none;
@@ -530,8 +574,8 @@ tbody tr:hover {
   #nav-header{
     width: 100%;
     max-width: 100%;
-    padding: 12px 1rem 0;
-    justify-content: flex-start;
+    padding: 12px 0 0;
+    justify-content: center;
     align-items: center;
   }
 
