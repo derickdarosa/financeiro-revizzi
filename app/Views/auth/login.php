@@ -19,13 +19,21 @@ $extraStyles = <<<HTML
       width: 100%;
       max-width: 380px;
     }
-    .login-titulo {
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--cor-azul);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.3rem;
+    #login-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.2rem;
+      background: rgb(26, 54, 91);
+      border: 1px solid rgba(26, 54, 91, 0.12);
+      border-radius: var(--bdr-md);
+      margin-bottom: 1.4rem;
+    }
+    #login-logo img {
+      max-width: 160px;
+      width: 100%;
+      height: auto;
+      display: block;
     }
     .login-sub {
       font-size: 1rem;
@@ -112,7 +120,7 @@ HTML;
 ?>
 
 <div class="login-card">
-  <p class="login-titulo">Revizzi</p>
+  <div id="login-logo"><img src="assets/img/teste.webp" alt="logo"></div>
   <p class="login-sub">Acesse sua conta para continuar</p>
 
   <?php if (!empty($erro)): ?>
