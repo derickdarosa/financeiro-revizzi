@@ -1,0 +1,5 @@
+.env
+
+# Metadados de skills/tooling do Claude Code, não fazem parte da aplicação
+.agents/
+skills-lock.json

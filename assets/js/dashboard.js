@@ -88,12 +88,12 @@ function adicionarNaTabela(movimentacao) {
   linha.dataset.responsavel = movimentacao.responsavel;
   linha.dataset.observacao  = movimentacao.observacao;
 
-  linha.innerHTML = `
-    <td>${dataFormatada}</td>
-    <td>${movimentacao.descricao}</td>
-    <td>${movimentacao.categoriaLabel}</td>
-    <td>${formatarValor(movimentacao.valor)}</td>
-  `;
+  const celulas = [dataFormatada, movimentacao.descricao, movimentacao.categoriaLabel, formatarValor(movimentacao.valor)];
+  celulas.forEach(texto => {
+    const td = document.createElement("td");
+    td.textContent = texto;
+    linha.appendChild(td);
+  });
 
   tbody.appendChild(linha);
 }
@@ -155,7 +155,10 @@ if (overlayAcoes) {
 
     const id = linhaSelecionada.dataset.id;
     try {
-      const res = await fetch(`${window.BASE}/api/lancamentos/${id}`, { method: "DELETE" });
+      const res = await fetch(`${window.BASE}/api/lancamentos/${id}`, {
+        method: "DELETE",
+        headers: { "X-CSRF-Token": window.CSRF_TOKEN },
+      });
       if (!res.ok) throw new Error();
     } catch {
       alert("Erro ao excluir. Tente novamente.");
@@ -195,7 +198,7 @@ if (overlayAcoes) {
       try {
         const res = await fetch(`${window.BASE}/api/lancamentos/${id}`, {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", "X-CSRF-Token": window.CSRF_TOKEN },
           body: JSON.stringify(movimentacao),
         });
         if (!res.ok) throw new Error();
@@ -225,7 +228,7 @@ if (overlayAcoes) {
       try {
         const res = await fetch(`${window.BASE}/api/lancamentos`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", "X-CSRF-Token": window.CSRF_TOKEN },
           body: JSON.stringify(movimentacao),
         });
         if (!res.ok) throw new Error();

@@ -1,4 +1,7 @@
+# Bloqueia acesso direto a dotfiles (.git, .env, .htaccess, etc.)
 RewriteEngine On
+RewriteRule "(^|/)\." - [F,L]
+
 RewriteBase /projetos-estudos/financeiro-revizzi/
 
 # Permite acesso direto a arquivos e diretórios existentes (CSS, JS, assets)

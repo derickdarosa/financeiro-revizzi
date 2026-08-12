@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= htmlspecialchars($titulo ?? 'Revizzi') ?></title>
+  <link rel="icon" type="image/webp" href="assets/img/revizzifavicon.webp">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/dashboard.css?v=<?= time() ?>">
   <?= $extraStyles ?>
@@ -27,6 +28,7 @@
         <div id="menu-hamburger">
           <a href="relatorios">Home</a>
           <a href="analises" <?= ($paginaAtiva ?? '') === 'analises' ? 'class="ativo"' : '' ?>>Análises</a>
+          <a href="orcamentos" <?= ($paginaAtiva ?? '') === 'orcamentos' ? 'class="ativo"' : '' ?>>Orçamentos</a>
           <a href="logout">Sair</a>
         </div>
       </div>
@@ -44,6 +46,7 @@
   </div>
   <script>
     window.BASE = '<?= rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') ?>';
+    window.CSRF_TOKEN = '<?= htmlspecialchars($_SESSION['csrf_token'] ?? '') ?>';
     document.getElementById('btn-hamburger')?.addEventListener('click', function(e) {
       e.stopPropagation();
       document.getElementById('menu-hamburger').classList.toggle('aberto');

@@ -22,4 +22,15 @@ abstract class Controller
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
     }
+
+    /** Valida o header X-CSRF-Token contra o token da sessão. Responde 403 e retorna false se inválido. */
+    protected function requireCsrf(): bool
+    {
+        $token = $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
+        if (!hash_equals($_SESSION['csrf_token'] ?? '', $token)) {
+            $this->json(['erro' => 'Token CSRF inválido ou ausente'], 403);
+            return false;
+        }
+        return true;
+    }
 }

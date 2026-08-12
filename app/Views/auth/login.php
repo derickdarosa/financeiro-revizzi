@@ -128,6 +128,7 @@ HTML;
   <?php endif; ?>
 
   <form method="POST" action="login">
+    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? '') ?>">
     <div class="login-field">
       <label for="usuario">Usuário</label>
       <input type="text" id="usuario" name="usuario"

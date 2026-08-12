@@ -33,6 +33,7 @@ body{
   overflow-x: hidden;
 }
 
+
 header{
   background-color: var(--cor-azul);
   color: var(--cor-branco-GM);
@@ -82,6 +83,8 @@ main {
   gap: 1.5rem;
   padding: 0 1.5rem 0 1.5rem;
   align-items: flex-start;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 #container-fluxo{
@@ -101,7 +104,9 @@ main {
 
 #nav-header{
   display: flex;
-  width: 100vw;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 2rem 0 0 2.5rem;
   align-items: center;
 }
@@ -326,6 +331,7 @@ table {
 #tab-registros th,
 #tab-registros td { width: 25%; text-align: center; }
 
+#tab-registros th,
 #tab-registros td {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -418,14 +424,28 @@ tbody tr:hover {
 
 #resultados-margem {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 1rem;
   margin-top: 1.2rem;
+}
+
+#resultados-margem .card-resumo {
+  min-width: 0;
+  padding: 1rem 0.9rem;
+  align-items: center;
+  text-align: center;
+}
+
+#resultados-margem .card-label {
+  font-size: 0.85rem;
 }
 
 #resultados-margem .card-valor {
   cursor: pointer;
   transition: color 0.2s;
+  font-size: clamp(1.05rem, 1vw + 0.8rem, 1.6rem);
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 
 #resultados-margem .card-valor.copiado {
@@ -628,18 +648,17 @@ tbody tr:hover {
     align-items: stretch;
     justify-content: center;
     flex-direction: column;
-    margin-right: 1rem;
   }
   
   #container-fluxo{
-    max-width: clamp(360px, 100vw, 390px);
+    max-width: clamp(320px, 100vw, 390px);
   }
 
   #container-exibicoes {
     position: static;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 0 16px 80px 16px;
+    padding: 0 0 2rem 0;
     gap: 10px;
   }
 
@@ -694,6 +713,12 @@ tbody tr:hover {
     padding: 0 1rem;
   }
 
+  #nav-header {
+    width: 100%;
+    padding: 12px 0 0;
+    justify-content: center;
+  }
+
   #container-fluxo {
     min-height: auto;
     width: 100%;
@@ -708,6 +733,15 @@ tbody tr:hover {
     max-width: 100%;
   }
 
+  .card-resumo {
+    padding: 0.8rem 1rem;
+    min-width: 120px;
+  }
+
+  .card-valor {
+    font-size: 1.2rem;
+  }
+
   #container-exibicoes {
     position: static;
     flex-direction: row;
@@ -718,6 +752,10 @@ tbody tr:hover {
   }
 }
 
+
+@media (min-width: 881px) and (max-width: 1200px) {
+  #bloco-form { padding: 0 0 2rem; }
+}
 
 @media (min-width: 881px) and (max-width: 1024px) {
   #container-fluxo{

@@ -58,6 +58,8 @@ class LancamentoController extends Controller
 
     public function store(): void
     {
+        if (!$this->requireCsrf()) return;
+
         $d = json_decode(file_get_contents('php://input'), true) ?? [];
 
         $tipo           = in_array($d['tipo'] ?? '', self::TIPOS, true)            ? $d['tipo']           : null;
@@ -92,6 +94,8 @@ class LancamentoController extends Controller
 
     public function update(string $id): void
     {
+        if (!$this->requireCsrf()) return;
+
         $d = json_decode(file_get_contents('php://input'), true) ?? [];
 
         $data           = $d['data'] ?? '';
@@ -124,6 +128,8 @@ class LancamentoController extends Controller
 
     public function destroy(string $id): void
     {
+        if (!$this->requireCsrf()) return;
+
         $ok = (new Lancamento())->delete((int) $id);
         $this->json(['ok' => $ok]);
     }

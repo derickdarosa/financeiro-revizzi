@@ -163,6 +163,9 @@ $extraStyles = <<<'HTML'
   .tabela-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .th-mob  { display: none; }
   .th-desk { display: inline; }
+  @media (min-width: 881px) and (max-width: 1200px) {
+    #analises-wrapper { padding: 0 0 2rem; }
+  }
   @media (max-width: 880px) {
     .cards-an         { grid-template-columns: 1fr 1fr; }
     .grid-pag         { grid-template-columns: 1fr 1fr; }
